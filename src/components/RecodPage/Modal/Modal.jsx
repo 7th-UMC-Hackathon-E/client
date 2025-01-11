@@ -1,11 +1,28 @@
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 import * as S from '@/components/RecodPage/Modal/Modal.style';
 import CancelBlack from '@/assets/icons/cancelBlack.svg?react';
 
 import CompleteItem from './../CompleteItem/CompleteItem';
 import IncompleteItem from './../IncompleteItem/IncompleteItem';
+import axios from 'axios';
+
 const Modal = ({ record, onClose }) => {
   if (!record) return null;
+  const [content, setContent] = useState('');
+  useEffect(() => {
+    const fetchData = async () => {
+      const r = Math.floor(Math.random() * (5 + 1));
+      console.log(r);
+      try {
+        const response = await axios.get(`http://13.124.169.172:8080/api/reviews/${r}`);
+        console.log(response);
+        setContent(response.data.result.content);
+      } catch (e) {
+        console.log(e);
+      }
+    };
+    fetchData();
+  }, []);
 
   return (
     <S.Overlay>
@@ -33,7 +50,7 @@ const Modal = ({ record, onClose }) => {
         <S.Br> </S.Br>
         <S.SubTitle>그날의 기록</S.SubTitle>
         <S.Description>
-          <p>나름 뿌듯하다.</p>
+          <p>{content || '나름 뿌듯했다 ㅎㅎ'}</p>
         </S.Description>
       </S.Container>
     </S.Overlay>

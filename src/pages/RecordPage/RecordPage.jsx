@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import ConstellationList from '@/components/RecodPage/ConstellationList/ConstellationList';
 import * as S from '@/pages/RecordPage/RecordPage.style';
 import Modal from '@/components/RecodPage/Modal/Modal';
