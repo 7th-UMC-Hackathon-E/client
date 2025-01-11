@@ -7,6 +7,5 @@ export default function unix_timeStamp(timestamp) {
   } else {
     date = dayjs().format('HH:mm:ss'); //이건 현재시간이 출력됨
   }
-  console.log(date);
   return date;
 }
