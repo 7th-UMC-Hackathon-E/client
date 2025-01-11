@@ -12,7 +12,7 @@ export const Container = styled.div`
 export const Title = styled.div`
   width: 100%;
   padding: 0px 33px 0px 33px;
-  margin-bottom: 20px;
+  margin-bottom: 1vh;
   p {
     color: var(--Primary-Brown-300, #dac7a7);
     font-size: 30px;
@@ -22,10 +22,10 @@ export const Title = styled.div`
   }
 `;
 export const Image = styled.img`
-  width: 393px;
-  height: 306.441px;
+  width: 100vw;
+  height: 35vh;
   flex-shrink: 0;
-  object-fit: cover;
+  object-fit: contain;
 `;
 
 export const Form = styled.div`
@@ -37,7 +37,7 @@ export const Form = styled.div`
 `;
 
 export const FormGroup = styled.div`
-  margin-bottom: 15px;
+  margin-bottom: 1vh;
   padding: 12px 16px 12px 16px;
   p {
     color: var(--Primary-Brown-300, #dac7a7);
@@ -63,7 +63,9 @@ export const FormGroup = styled.div`
 
 export const Button = styled.button`
   padding: 12px;
-  margin: 41px 16px 0px 16px;
+  margin-top: 3vh;
+  margin-left: 16px;
+  margin-right: 16px;
   background: var(--Primary-Brown-300, #dac7a7);
   color: var(--Primary-Brown-700, #5a4726);
   font-size: 18px;
