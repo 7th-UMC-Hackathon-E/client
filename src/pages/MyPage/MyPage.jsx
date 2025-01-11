@@ -1,6 +1,17 @@
 import * as S from '@/pages/MyPage/MyPage.style';
+import { useNavigate } from 'react-router-dom';
 
 const MyPage = () => {
+  const navigate = useNavigate();
+
+  const goToTodos = () => {
+    navigate('/todos');
+  };
+
+  const goToRecords = () => {
+    navigate('/records');
+  };
+
   return (
     <S.Container>
       <S.TimerContainer>
@@ -13,8 +24,8 @@ const MyPage = () => {
         <S.name>이름</S.name>
       </S.nameDiv>
       <S.ButtonsContainer>
-        <S.Button>ToDo 작성</S.Button>
-        <S.Button>이전 기록 보기</S.Button>
+        <S.Button onClick={goToTodos}>ToDo 작성</S.Button>
+        <S.Button onClick={goToRecords}>이전 기록 보기</S.Button>
       </S.ButtonsContainer>
     </S.Container>
   );
