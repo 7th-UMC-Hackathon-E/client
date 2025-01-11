@@ -5,24 +5,25 @@ import Modal from '@/components/RecodPage/Modal/Modal';
 import CancelWhite from '@/assets/icons/cancelWhite.svg?react';
 
 const constellations = [
-  { percentage: 100, image: '/images/constellation1.png', date: '2025. 01. 11' },
-  { percentage: 50, image: '/images/constellation2.png', date: '2025. 01. 10' },
-  { percentage: 100, image: '/images/constellation3.png', date: '2025. 01. 09' },
-  { percentage: 100, image: '/images/constellation4.png', date: '2025. 01. 08' },
+  { percentage: 100, image: '/images/gray0.png', date: '2025. 01. 11' },
+  { percentage: 50, image: '/images/gray50.png', date: '2025. 01. 10' },
+  { percentage: 0, image: '/images/gray100.png', date: '2025. 01. 09' },
+  { percentage: 100, image: '/images/gray0.png', date: '2025. 01. 08' },
+  { percentage: 50, image: '/images/gray50.png', date: '2025. 01. 07' },
+  { percentage: 100, image: '/images/gray0.png', date: '2025. 01. 06' },
+  { percentage: 100, image: '/images/gray0.png', date: '2025. 01. 06' },
+  { percentage: 100, image: '/images/gray0.png', date: '2025. 01. 06' },
 ];
 
 const RecordPage = () => {
-  // 🧩 모달 상태 및 선택된 데이터 관리
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [selectedRecord, setSelectedRecord] = useState(null);
 
-  // 🧩 카드 클릭 시 모달 열기
   const openModal = (record) => {
     setSelectedRecord(record);
     setIsModalOpen(true);
   };
 
-  // 🧩 모달 닫기
   const closeModal = () => {
     setIsModalOpen(false);
     setSelectedRecord(null);
@@ -39,7 +40,7 @@ const RecordPage = () => {
         <ConstellationList constellations={constellations} onCardClick={openModal} />
       </S.Container>
 
-      {1 && <Modal record={selectedRecord} onClose={closeModal} />}
+      {isModalOpen && <Modal record={selectedRecord} onClose={closeModal} />}
     </>
   );
 };

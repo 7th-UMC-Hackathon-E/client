@@ -19,20 +19,21 @@ const Modal = ({ record, onClose }) => {
 
         <S.Percentage>{record.percentage}% 달성</S.Percentage>
 
-        <S.Text>완료한 todo : 3개</S.Text>
+        <S.Text>완료한 todo : 2개</S.Text>
         <S.CompleteList>
-          <CompleteItem text="sdfsdf" />
-          <CompleteItem text="sdfsdf" />
+          <CompleteItem text="영어 단어 외우기 1-4 단원" />
+          <CompleteItem text="영어 단어 외우기 5-6 단원" />
         </S.CompleteList>
         <S.Text>완료하지 못한 todo : 2개</S.Text>
         <S.CompleteList>
-          <IncompleteItem text="sdfsdf" />
+          <IncompleteItem text="영어 단어 외우기 7-8 단원" />
+          <IncompleteItem text="영어 단어 외우기 9-10 단원" />
         </S.CompleteList>
 
         <S.Br> </S.Br>
         <S.SubTitle>그날의 기록</S.SubTitle>
         <S.Description>
-          <p>나름 뿌듯하다.asdfasdfasfasdfsdfasdfasdfasdfasdfsdfasdfasdfasdf</p>
+          <p>나름 뿌듯하다.</p>
         </S.Description>
       </S.Container>
     </S.Overlay>

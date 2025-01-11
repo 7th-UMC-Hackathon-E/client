@@ -10,7 +10,8 @@ export const Overlay = styled.div`
   justify-content: center;
   align-items: center;
   z-index: 1000;
-  padding: 39px 17px 113px 17px;
+  padding: 39px 17px 95px 17px;
+  width: 100vw;
 `;
 
 export const Container = styled.div`
@@ -22,7 +23,7 @@ export const Container = styled.div`
   box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
   display: flex;
   flex-direction: column;
-  gap: 25px;
+  gap: 15px;
   z-index: 1001;
 `;
 
@@ -31,7 +32,7 @@ export const Header = styled.div`
   justify-content: space-between;
   align-items: center;
   border-bottom: 1px solid #e2e2e2;
-
+  margin-bottom: 20px;
   padding: 20px 16px 24px 76px;
 `;
 
@@ -67,6 +68,7 @@ export const Text = styled.div`
   font-style: normal;
   font-weight: 400;
   line-height: 16px;
+  margin: 5px;
 `;
 
 export const CompleteList = styled.div`
@@ -100,7 +102,7 @@ export const SubTitle = styled.div`
   margin-left: 16px;
   height: 17px;
   align-self: stretch;
-  color: white;
+  color: black;
   font-size: 12px;
   font-style: normal;
   font-weight: 400;
