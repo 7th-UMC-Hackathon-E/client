@@ -23,8 +23,8 @@ const TodoPage = () => {
     error,
   } = useQuery({
     queryKey: ['todoList'], // 캐시 키
-    // queryFn: () => getTodoslist(1, unix_timeStamp_data()), // API 호출 함수
-    queryFn: () => getTodoslist(1, '2025-01-11'), // API 호출 함수
+    queryFn: () => getTodoslist(1, unix_timeStamp_data()), // API 호출 함수
+    // queryFn: () => getTodoslist(1, '2025-01-11'), // API 호출 함수
   });
 
   const handleChange = (e) => {
@@ -73,13 +73,9 @@ const TodoPage = () => {
       </S.Header>
 
       <S.TodoList>
-        {todos?.length > 0 ? (
-          todos.map((todo, index) => (
-            <TodoItem key={index} text={todo.description} onDelete={() => handleDeleteTodo(todo.id)} />
-          ))
-        ) : (
-          <div>할 일이 없습니다.</div>
-        )}
+        {todos.map((todo, index) => (
+          <TodoItem key={index} text={todo.description} onDelete={() => handleDeleteTodo(todo.id)} />
+        ))}
       </S.TodoList>
 
       <S.InputContainer>

@@ -3,29 +3,48 @@ import { useNavigate } from 'react-router-dom';
 import * as S from './MainTodo.style';
 import CheckFilledIcon from '@/assets/icons/mains/check.svg';
 import CheckEmptyIcon from '@/assets/icons/mains/uncheck.svg';
+import { getTodoslist } from '@/apis';
+import { useQuery, useQueryClient } from '@tanstack/react-query';
+import unix_timeStamp_data from '@/components/common/Date';
 
-const todosData = [
-  { id: 1, title: '할 일 1', isCompleted: false },
-  { id: 2, title: '할 일 2', isCompleted: false },
-  { id: 3, title: '할 일 3', isCompleted: false },
-];
 
 const MainTodo = ({ updateImages }) => {
-  const [todos, setTodos] = useState(todosData);
+  // const [todos, setTodos] = useState(todosData);
   const [isModalOpen, setIsModalOpen] = useState(false);
   const navigate = useNavigate();
+  const queryClient = useQueryClient(); // React Query 클라이언트 사용
+  const {
+    data: todoData,
+    isLoading,
+    error,
+  } = useQuery({
+    queryKey: ['todoList'], // 캐시 키
+    //queryFn: () => getTodoslist(1, unix_timeStamp_data()), // API 호출 함수
+    queryFn: () => getTodoslist(1, '2025-01-11'), // API 호출 함수
+  });
+  const todos = Array.isArray(todoData?.result) ? todoData?.result?.[0]?.todos : [];
 
   const handleNavigate = () => {
     navigate('/mypage');
   };
 
   const toggleTodo = (id) => {
-    const updatedTodos = todos.map((todo) => (todo.id === id ? { ...todo, isCompleted: !todo.isCompleted } : todo));
-    setTodos(updatedTodos);
+    queryClient.setQueryData(['todoList'], (oldData) => {
+      if (!oldData) return oldData;
+
+      return {
+        ...oldData,
+        result: oldData.result.map((resultItem) => ({
+          ...resultItem,
+          todos: resultItem.todos.map((todo) => (todo.id === id ? { ...todo, status: !todo.status } : todo)),
+        })),
+      };
+    });
   };
 
   const calculateProgress = () => {
-    const completedCount = todos.filter((todo) => todo.isCompleted).length;
+    if (todos.length === 0) return 0; // todos가 없을 때 0% 반환
+    const completedCount = todos.filter((todo) => todo.status).length;
     return Math.round((completedCount / todos.length) * 100);
   };
 
@@ -44,12 +63,12 @@ const MainTodo = ({ updateImages }) => {
       <S.TodoWrapper>
         {todos.map((todo) => (
           <S.TodoItem key={todo.id} onClick={() => toggleTodo(todo.id)}>
-            {todo.isCompleted ? (
+            {todo.status ? (
               <img src={CheckFilledIcon} alt="완료" width="18px" height="18px" />
             ) : (
               <img src={CheckEmptyIcon} alt="미완료" width="18px" height="18px" />
             )}
-            <S.TodoText isCompleted={todo.isCompleted}>{todo.title}</S.TodoText>
+            <S.TodoText isCompleted={todo.status}>{todo.description}</S.TodoText>
           </S.TodoItem>
         ))}
       </S.TodoWrapper>
