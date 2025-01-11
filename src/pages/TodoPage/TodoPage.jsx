@@ -7,11 +7,15 @@ import TodoItem from './../../components/TodoPage/TodoItem/TodoItem';
 import { postTodo, getTodoslist, deleteTodo } from '@/apis';
 import { useQuery, useQueryClient } from '@tanstack/react-query';
 import unix_timeStamp_data from '@/components/common/Date';
+import { useNavigate } from 'react-router-dom';
 
 const TodoPage = () => {
   const [inputValue, setInputValue] = useState('');
   const queryClient = useQueryClient(); // React Query 클라이언트 사용
-
+  const navigate = useNavigate();
+  const goToCategories = () => {
+    navigate('/categories');
+  };
   // Todo 리스트 가져오기
   const {
     data: todoData,
@@ -65,7 +69,7 @@ const TodoPage = () => {
     <S.Container>
       <S.Header>
         <Typography varient="h2">TO DO</Typography>
-        <Button text="작성 완료" />
+        <Button text="작성 완료" onClick={goToCategories} />
       </S.Header>
 
       <S.TodoList>
