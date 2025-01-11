@@ -26,7 +26,7 @@ const SplashPage = () => {
   return (
     <S.Container>
       <S.Title>
-        <p>서비스명</p>
+        <p>In2the</p>
       </S.Title>
       <S.Image src="/images/login_img.png" alt="Login Image" />
       <S.Form>
