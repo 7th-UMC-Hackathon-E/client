@@ -2,11 +2,12 @@ import styled from 'styled-components';
 
 export const Button = styled.button`
   display: flex;
-  padding: 7px 15px;
+  padding: 0px 15px;
   background-color: inherit;
   align-items: center;
   justify-content: center;
   border-radius: 30px;
+  font-size: 13px;
   border: 1px solid ${({ theme }) => theme.colors.brown[300]};
 `;
 
