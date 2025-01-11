@@ -4,6 +4,14 @@ import './index.css';
 import App from './App.jsx';
 import { ThemeProvider } from 'styled-components';
 import theme from '@/styles/theme.js';
+import dayjs from 'dayjs';
+import isLeapYear from 'dayjs/plugin/isLeapYear'; // 윤년 판단 플러그인
+import 'dayjs/locale/ko'; // 한국어 가져오기
+import unix_timeStamp from './components/common/Timer.js';
+
+dayjs.extend(isLeapYear); // 플러그인 등록
+dayjs.locale('ko'); // 언어 등록
+unix_timeStamp(); // 현재시간 출력
 
 async function enableMocking() {
   if (!import.meta.env.DEV) {
