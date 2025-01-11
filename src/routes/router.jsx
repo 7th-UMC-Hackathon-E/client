@@ -1,11 +1,10 @@
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
-import SplashPage from '../pages/SplashPage';
-import TodoPage from '../pages/SplashPage';
-import CategoryPage from '../pages/CategoryPage';
-import MainPage from '../pages/MainPage';
-import MyPage from '../pages/MyPage';
-import RecordPage from '../pages/RecordPage';
-
+import SplashPage from '@/pages/SplashPage';
+import TodoPage from '@/pages/SplashPage';
+import CategoryPage from '@/pages/CategoryPage';
+import MainPage from '@/pages/MainPage';
+import MyPage from '@/pages/MyPage';
+import RecordPage from '@/pages/RecordPage';
 const Router = () => {
   return (
     <BrowserRouter>
