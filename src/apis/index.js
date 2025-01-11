@@ -12,55 +12,51 @@ export const api = axios.create({
 
 export const getUserDetail = async () => {
   const response = await api.get('/api/user/detail');
-  return response;
+  console.log(response.data);
+  return response.data;
 };
 
-// export const postSignUp = async (requset) => {
-//   const response = await api.post('/auth/signUp', requset);
+export const postTodo = async (request) => {
+  const response = await api.post('/api/todos', request);
+  return response.data;
+};
 
-//   return response;
-// };
+export const patchTodo = async (id, request) => {
+  const response = await api.patch(`/api/todos/${id}/status`, request);
+  return response.data;
+};
 
-// export const postEmailDuplication = async (request) => {
-//   const response = await api.post('/auth/emailDuplication', request);
+export const deleteTodo = async (id) => {
+  const response = await api.delete(`/api/todos/${id}`);
+  return response.data;
+};
 
-//   return response;
-// };
+export const getTodoslist = async () => {
+  const response = await api.get('/api/todos/todos');
+  return response.data;
+};
 
-// export const postEmailVerification = async (request) => {
-//   const response = await api.post('/auth/emailVerification', request);
+export const getTodoProgress = async () => {
+  const response = await api.get(`/api/todos/progress`);
+  return response.data;
+};
 
-//   return response;
-// };
+export const postRoom = async (roomId, request) => {
+  const response = await api.post(`/api/room/${roomId}/enter`, request);
+  return response.data;
+};
 
-// export const postLogin = async (request) => {
-//   const response = await api.post('/auth/login', request);
+export const getRoom = async (roomId) => {
+  const response = await api.get(`/api/room/${roomId}/detail`);
+  return response.data;
+};
 
-//   return response;
-// };
+export const getRoomList = async () => {
+  const response = await api.get(`/api/room/list`);
+  return response.data;
+};
 
-// export const postMail = async (id, request) => {
-//   const response = await api.post(`/mail/${id}`, request);
-//   return response;
-// };
-
-// export const getFriendMail = async (id, { page, size }) => {
-//   const response = await api.get(`/friendMail/${id}?page=${page}&size=${size}`);
-//   return response;
-// };
-
-// export const getMyMail = async (id, filter, { page, size }) => {
-//   const response = await api.get(`/myMail/${id}?filter=${filters[filter]}?page=${page}&size=${size}`);
-//   return response;
-// };
-
-// export const getSearch = async (q) => {
-//   const response = await api.get(`/search?keyword=${q}`);
-//   return response.data;
-// };
-
-// export const getKWTreeMail = async () => {
-//   const response = await api.get('/kwTree/mailBoxList');
-//   console.log(response);
-//   return response.data;
-// };
+export const leaveRoom = async (roomId) => {
+  const response = await api.delete(`/api/room/${roomId}/leave`);
+  return response.data;
+};
