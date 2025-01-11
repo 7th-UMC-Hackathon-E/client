@@ -15,7 +15,23 @@
 
 body {
   line-height: 1.5;
+  margin: 0;
+  padding: 0;
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  justify-content: center; /* 수평 가운데 정렬 */
+  align-items: center; /* 수직 가운데 정렬 */
+  overflow: hidden; /* 가로/세로 스크롤 방지 */
   -webkit-font-smoothing: antialiased;
+}
+/* 콘텐츠 박스 */
+.container {
+  width: 375px; /* 모바일 기준 너비 (예: iPhone 크기) */
+  height: 100%; /* 화면 높이에 맞춤 */
+  background-color: #333; /* 배경색 지정 (원하면 투명하게 가능) */
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.2); /* 살짝의 그림자 추가 */
+  overflow-y: auto; /* 세로 스크롤 허용 */
 }
 
 img,
