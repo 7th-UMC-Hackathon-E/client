@@ -9,7 +9,7 @@ import unix_timeStamp_data from '@/components/common/Date';
 
 
 const MainTodo = ({ updateImages }) => {
-  const [todos, setTodos] = useState(todosData);
+  // const [todos, setTodos] = useState(todosData);
   const [isModalOpen, setIsModalOpen] = useState(false);
   const navigate = useNavigate();
   const queryClient = useQueryClient(); // React Query 클라이언트 사용
