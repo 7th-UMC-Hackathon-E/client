@@ -65,7 +65,7 @@ const MyPage = () => {
         <S.name>이름</S.name>
       </S.nameDiv>
       <S.ButtonsContainer>
-        <S.Button onClick={goToTodos}>ToDo 작성</S.Button>
+        <S.Button onClick={goToTodos}>목표 달성하러 가기</S.Button>
         <S.Button onClick={goToRecords}>이전 기록 보기</S.Button>
       </S.ButtonsContainer>
     </S.Container>
