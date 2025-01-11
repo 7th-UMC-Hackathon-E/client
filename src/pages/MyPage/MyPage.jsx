@@ -3,13 +3,18 @@ import * as S from '@/pages/MyPage/MyPage.style';
 import { useNavigate } from 'react-router-dom';
 import dayjs from 'dayjs';
 import duration from 'dayjs/plugin/duration';
-import isBetween from 'dayjs/plugin/isBetween';
+import { getUserDetail } from '@/apis';
+import { useQuery } from '@tanstack/react-query';
 
 dayjs.extend(duration);
 
 const MyPage = () => {
   const navigate = useNavigate();
   const [countdown, setCountdown] = useState('');
+  const { data, isLoading, error } = useQuery({
+    queryKey: ['userDetail'],
+    queryFn: () => getUserDetail(),
+  });
 
   useEffect(() => {
     const calculateTimeLeft = () => {
@@ -62,7 +67,7 @@ const MyPage = () => {
       </S.TimerContainer>
       <S.mainUnionImage src="/images/mypage_mainUnion.png" alt="Main Union Image" />
       <S.nameDiv>
-        <S.name>이름</S.name>
+        <S.name>{data?.result?.name || '이름 로딩 중...'}</S.name>
       </S.nameDiv>
       <S.ButtonsContainer>
         <S.Button onClick={goToTodos}>목표 달성하러 가기</S.Button>
