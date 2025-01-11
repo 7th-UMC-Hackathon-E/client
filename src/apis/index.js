@@ -31,8 +31,13 @@ export const deleteTodo = async (id) => {
   return response.data;
 };
 
-export const getTodoslist = async () => {
-  const response = await api.get('/api/todos/todos');
+export const getTodoslist = async (memberId, date) => {
+  const response = await api.get('/api/todos/todos', {
+    params: {
+      memberId: memberId, // memberId를 쿼리 파라미터로 전달
+      date: date, // date를 쿼리 파라미터로 전달
+    },
+  });
   return response.data;
 };
 

@@ -4,61 +4,68 @@ import { Button } from '@/components/common/Button/Button';
 import EnterIcon from '@/assets/icons/enter.svg?react';
 import Typography from './../../components/Typography';
 import TodoItem from './../../components/TodoPage/TodoItem/TodoItem';
+import { postTodo, getTodoslist } from '@/apis';
+import { useQuery, useQueryClient } from '@tanstack/react-query';
+import unix_timeStamp_data from '@/components/common/Date';
 
 const TodoPage = () => {
-  const [todos, setTodos] = useState([]);
   const [inputValue, setInputValue] = useState('');
+  const queryClient = useQueryClient();
 
-  // 입력
+  // Todo 리스트 가져오기
+  const {
+    data: todoData,
+    isLoading,
+    error,
+  } = useQuery({
+    queryKey: ['todoList'], // 캐시 키
+    queryFn: () => getTodoslist(5, unix_timeStamp_data()), // API 호출 함수
+  });
   const handleChange = (e) => {
     setInputValue(e.target.value);
   };
 
-  // 아이템 추가 함수
-  const addTodo = () => {
+  const todos = Array.isArray(todoData?.result) ? todoData?.result?.[0]?.todos : [];
+  console.log('todos:', todos);
+
+  const handleAddTodo = () => {
     if (!inputValue.trim()) return;
-    setTodos([...todos, inputValue]);
-    setInputValue('');
-  };
 
-  // 아이템 삭제 함수
-  const deleteTodo = (indexToDelete) => {
-    setTodos(todos.filter((_, index) => index !== indexToDelete));
-  };
+    const newTodo = {
+      memberId: 1, // 사용자 ID
+      description: inputValue, // 입력값
+    };
 
-  // 엔터 시 아이템 생성 함수
-  const handleKeyPress = (e) => {
-    if (e.key === 'Enter') {
-      e.preventDefault();
-      addTodo();
+    try {
+      const result = postTodo(newTodo);
+      console.log('할 일 생성 성공:', result);
+    } catch (error) {
+      console.error('할 일 생성 실패:', error);
     }
+    setInputValue(''); // 입력값 초기화
   };
-  // 엔터 시 아이템 생성 함수
-  const handleSubmit = () => {
-    console.log('제출');
-  };
+
+  if (isLoading) return <S.Container>로딩 중...</S.Container>;
+  if (error) return <S.Container>에러 발생: {error.message}</S.Container>;
 
   return (
     <S.Container>
       <S.Header>
         <Typography varient="h2">TO DO</Typography>
-        <Button text="작성 완료" onClick={handleSubmit} />
+        <Button text="작성 완료" />
       </S.Header>
 
       <S.TodoList>
-        {todos.map((todo, index) => (
-          <TodoItem key={index} text={todo} onDelete={() => deleteTodo(index)} />
-        ))}
+        {todos?.length > 0 ? (
+          todos.map((todo, index) => <TodoItem key={index} text={todo.description} />)
+        ) : (
+          <div>할 일이 없습니다.</div>
+        )}
       </S.TodoList>
 
       <S.InputContainer>
-        <S.Input
-          placeholder="달성하고 싶은 목표는 무엇인가요?"
-          value={inputValue}
-          onChange={handleChange}
-          onKeyPress={handleKeyPress}
-        />
-        <S.EnterButton onClick={addTodo}>
+        <S.Input placeholder="달성하고 싶은 목표는 무엇인가요?" value={inputValue} onChange={handleChange} />
+        <S.EnterButton onClick={handleAddTodo}>
           <EnterIcon />
         </S.EnterButton>
       </S.InputContainer>
