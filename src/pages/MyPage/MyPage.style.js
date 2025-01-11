@@ -84,7 +84,7 @@ export const Button = styled.button`
   border: none;
   border-radius: 10px;
   background-color: ${({ theme }) => theme.colors.brown[300]};
-  font-size: 18px;
+  font-size: 15px;
   font-weight: 600;
   color: ${({ theme }) => theme.colors.brown[900]};
   cursor: pointer;
