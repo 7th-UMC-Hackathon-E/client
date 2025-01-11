@@ -1,4 +1,5 @@
 import { useState, useEffect } from 'react';
+import { useNavigate } from 'react-router-dom';
 import ConstellationList from '@/components/RecodPage/ConstellationList/ConstellationList';
 import * as S from '@/pages/RecordPage/RecordPage.style';
 import Modal from '@/components/RecodPage/Modal/Modal';
@@ -18,6 +19,7 @@ const constellations = [
 const RecordPage = () => {
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [selectedRecord, setSelectedRecord] = useState(null);
+  const navigate = useNavigate();
 
   const openModal = (record) => {
     setSelectedRecord(record);
@@ -28,12 +30,14 @@ const RecordPage = () => {
     setIsModalOpen(false);
     setSelectedRecord(null);
   };
-
+  const handleCancel = () => {
+    navigate('/mypage');
+  };
   return (
     <>
       <S.Container>
         <S.Header>
-          <S.Button>
+          <S.Button onClick={handleCancel}>
             <CancelWhite />
           </S.Button>
         </S.Header>
