@@ -12,21 +12,28 @@ dayjs.extend(isBetween);
 dayjs.extend(isLeapYear); // 플러그인 등록
 dayjs.locale('ko'); // 언어 등록
 
-async function enableMocking() {
-  if (!import.meta.env.DEV) {
-    return;
-  }
+// async function enableMocking() {
+//   if (!import.meta.env.DEV) {
+//     return;
+//   }
 
-  const { worker } = await import('./mocks/browser.js');
-  return worker.start();
-}
+//   const { worker } = await import('./mocks/browser.js');
+//   return worker.start();
+// }
 
-enableMocking().then(
-  createRoot(document.getElementById('root')).render(
-    <StrictMode>
-      <ThemeProvider theme={theme}>
-        <App />
-      </ThemeProvider>
-    </StrictMode>
-  )
+// enableMocking().then(
+//   createRoot(document.getElementById('root')).render(
+//     <StrictMode>
+//       <ThemeProvider theme={theme}>
+//         <App />
+//       </ThemeProvider>
+//     </StrictMode>
+//   )
+// );
+createRoot(document.getElementById('root')).render(
+  <StrictMode>
+    <ThemeProvider theme={theme}>
+      <App />
+    </ThemeProvider>
+  </StrictMode>
 );
