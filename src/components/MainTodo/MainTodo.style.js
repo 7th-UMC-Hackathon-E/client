@@ -51,7 +51,6 @@ export const ModalOverlay = styled.div`
   left: 0;
   width: 100vw;
   height: 500px;
-  background-color: rgba(0, 0, 0, 0.5);
   display: flex;
   justify-content: center;
   z-index: 1000;
