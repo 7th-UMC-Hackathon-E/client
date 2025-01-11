@@ -57,5 +57,6 @@
 ### 2. 브랜치 소스 설정
 브랜치를 생성할 때 **develop 브랜치를 기준**으로 만듭니다.
 
-1. `create a branch` 클릭 후 이름 지정.
-2. `change branch source`에서 **develop** 선택.
+1. issue 제작
+2. `create a branch` 클릭 후 이름 지정. (브랜치 연결 과정, PR시 용이)
+
