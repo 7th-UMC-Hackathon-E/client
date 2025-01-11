@@ -24,6 +24,7 @@ body {
   align-items: center; /* 수직 가운데 정렬 */
   overflow: hidden; /* 가로/세로 스크롤 방지 */
   -webkit-font-smoothing: antialiased;
+  background: #3f3f3f;
 }
 /* 콘텐츠 박스 */
 .container {
