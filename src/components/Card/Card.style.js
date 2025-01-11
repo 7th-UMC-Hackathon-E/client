@@ -32,9 +32,10 @@ export const LockIconStyled = styled.img`
 
 export const StarIconStyled = styled.img`
   position: absolute;
-  top: 34px;
-  width: 42px;
-  height: 42px;
+  top: 20%;
+  width: 30%;
+  height: auto;
+  object-fit: contain;
 `;
 
 export const Participants = styled.div`
