@@ -25,7 +25,8 @@ const typographyStyles = {
 
 const Typography = styled.p`
   font-family: ${({ theme }) => theme.font.family};
-  ${({ variant }) => typographyStyles[variant] || typographyStyles.h2}
+  ${({ variant }) => typographyStyles[variant] || typographyStyles.h2};
+  color: ${({ theme }) => theme.colors.brown[300]};
 `;
 
 export default Typography;
