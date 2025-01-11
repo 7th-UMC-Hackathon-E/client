@@ -1,7 +1,10 @@
 import * as S from '@/pages/SplashPage/SplashPage.style';
 import { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 
 const SplashPage = () => {
+  const navigate = useNavigate();
+
   const [input, setInput] = useState({
     name: '',
     birth: '',
@@ -14,6 +17,10 @@ const SplashPage = () => {
       ...input,
       [name]: value,
     });
+  };
+
+  const goToMypage = () => {
+    navigate('/mypage');
   };
 
   return (
@@ -31,7 +38,7 @@ const SplashPage = () => {
           <p>생년월일</p>
           <input name="birth" value={input.birth} onChange={handleInput} type="date" placeholder="YYYY-MM-DD" />
         </S.FormGroup>
-        <S.Button>서비스 입장하기</S.Button>
+        <S.Button onClick={goToMypage}>서비스 입장하기</S.Button>
       </S.Form>
     </S.Container>
   );

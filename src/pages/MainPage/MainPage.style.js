@@ -9,6 +9,16 @@ export const Container = styled.div`
   justify-items: center;
 `;
 
+export const ImageContainer = styled.div`
+  width: 100%;
+  height: 100vh;
+  background-image: url('/images/backgroundBlue.png');
+  background-size: cover;
+  background-position: center;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+  overflow-y: auto;
+`;
+
 export const TodoSection = styled.div`
   display: flex;
   justify-content: center;
