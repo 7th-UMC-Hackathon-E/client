@@ -14,7 +14,7 @@ const constellationsData = [
 
 const MainPage = () => {
   return (
-    <>
+    <S.ImageContainer>
       <StatusBar rank={4} participants={6} />
       <S.Container>
         {constellationsData.map(({ userId, username, image, rank }) => (
@@ -24,7 +24,7 @@ const MainPage = () => {
       <S.TodoSection>
         <MainTodo />
       </S.TodoSection>
-    </>
+    </S.ImageContainer>
   );
 };
 
