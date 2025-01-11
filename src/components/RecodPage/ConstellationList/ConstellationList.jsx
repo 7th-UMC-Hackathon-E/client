@@ -4,7 +4,7 @@ const ConstellationList = ({ constellations, onCardClick }) => {
   return (
     <S.Container>
       {constellations.map((item, index) => (
-        <S.Card key={index} onClick={() => onCardClick(item)}>
+        <S.Card key={index} onClick={() => onCardClick(item)} isCompleted={item.percentage === 100}>
           <S.CardContent>
             <S.PercentageContainer>
               <S.Percentage>{item.percentage}%</S.Percentage>

@@ -4,7 +4,7 @@ export const Container = styled.div`
   display: flex;
   flex-direction: column;
   padding: 26px;
-  width: 375px;
+  width: 100vw;
   height: 100vh;
   background-image: url('/images/backgroundBlue.png');
   background-size: cover;
