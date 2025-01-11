@@ -7,7 +7,6 @@ import { getTodoslist } from '@/apis';
 import { useQuery, useQueryClient } from '@tanstack/react-query';
 import unix_timeStamp_data from '@/components/common/Date';
 
-
 const MainTodo = ({ updateImages }) => {
   // const [todos, setTodos] = useState(todosData);
   const [isModalOpen, setIsModalOpen] = useState(false);
@@ -19,8 +18,8 @@ const MainTodo = ({ updateImages }) => {
     error,
   } = useQuery({
     queryKey: ['todoList'], // 캐시 키
-    //queryFn: () => getTodoslist(1, unix_timeStamp_data()), // API 호출 함수
-    queryFn: () => getTodoslist(1, '2025-01-11'), // API 호출 함수
+    queryFn: () => getTodoslist(1, unix_timeStamp_data()), // API 호출 함수
+    //queryFn: () => getTodoslist(1, '2025-01-11'), // API 호출 함수
   });
   const todos = Array.isArray(todoData?.result) ? todoData?.result?.[0]?.todos : [];
 
